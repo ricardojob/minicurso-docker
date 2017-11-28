@@ -30,9 +30,9 @@ COPY app.war ${CATALINA_HOME}/webapps
 
 ### Criar uma image
 
-`docker build -t exemplo .`
-*`-t`: qual a tag que vamos atribuir a essa imagem*  
-*`.`: caminho relativo (ou absoluto) para o arquivo Dockerfile*  
+`docker build -t exemplo .`  
+*`-t`: qual a tag que vamos atribuir a essa imagem*    
+*`.`: caminho relativo (ou absoluto) para o arquivo Dockerfile*    
 
 
 ### Executar a imagem criada
@@ -55,35 +55,35 @@ COPY create.sql /docker-entrypoint-initdb.d/
 COPY insert.sql /docker-entrypoint-initdb.d/
 ```
 ### Criar uma imagem do banco PostgreSQL
-`docker build -t minicurso/banco ./postgres`:  
-*`-t`: qual a tag que vamos atribuir a essa imagem*  
-*`./postgres`: caminho relativo (ou absoluto) para o arquivo Dockerfile*  
+`docker build -t minicurso/banco ./postgres`:    
+*`-t`: qual a tag que vamos atribuir a essa imagem*    
+*`./postgres`: caminho relativo (ou absoluto) para o arquivo Dockerfile*    
 
 ### Executar o container  
-`docker run -p 5433:5432 -d --name banco minicurso/banco`:
-*`-p`: o bind entre a porta do host local com a porta do container*  
-*`-d`: o container seja executar em background*  
-*`--name`: o nome do container*  
+`docker run -p 5433:5432 -d --name banco minicurso/banco`:  
+*`-p`: o bind entre a porta do host local com a porta do container*    
+*`-d`: o container seja executar em background*    
+*`--name`: o nome do container*    
 
 ## Executar comandos no container  
 Para executarmos comandos necessitamos de executar o comando `docker exec -it <container_id | container_name> <command>`.
 Por exemplo, para termos acesso ao container do banco que configuramos podemos fazer:
 
-`docker exec -it banco /bin/bash`:  
-*`-it`: para termos acesso iterativo ao TTY*  
-*`banco`: o nome do container que desejamos seja executar determinado comando*  
-*`/bin/bash`: o comando que vamos executar no container*  
+`docker exec -it banco /bin/bash`:    
+*`-it`: para termos acesso iterativo ao TTY*    
+*`banco`: o nome do container que desejamos seja executar determinado comando*    
+*`/bin/bash`: o comando que vamos executar no container*    
 
 Após esses passos, teremos acesso ao terminal do container. Podemos acessar o _database_ que definimos no arquivo `Dockerfile` que configura o banco de dados, neste exemplo `minicurso`.
 
-`psql -U postgres minicurso`:  
-*`-U`: usuário configurado*  
-*`minicurso`: o _database_ que desejamos acessar*
+`psql -U postgres minicurso`:   
+*`-U`: usuário configurado*   
+*`minicurso`: o _database_ que desejamos acessar*  
 
-Alguns comando úteis no `psql`:  
-*`\dt`: lista as tabelas do _database_*    
-*`select * from integrante;`: seleciona todos os integrantes*  
-*`INSERT INTO integrante(nome, cpf) VALUES ('Chapolin','123.123.123-09');`: insere um novo integrante*    
+Alguns comando úteis no `psql`:    
+*`\dt`: lista as tabelas do _database_*      
+*`select * from integrante;`: seleciona todos os integrantes*    
+*`INSERT INTO integrante(nome, cpf) VALUES ('Chapolin','123.123.123-09');`: insere um novo integrante*      
 *`\q`: sair do _database_*  
 
 
