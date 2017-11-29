@@ -1,0 +1,12 @@
+{
+    "name": "minicurso",
+    "version": "1.0.0",
+    "description": "Node.js em Docker",
+    "main": "client-node.js",
+    "scripts": {
+      "start": "node client-node.js"
+    },
+    "dependencies": {
+      "mqtt": "^1.6.3"
+    }
+  }
